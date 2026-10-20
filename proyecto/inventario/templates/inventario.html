@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Inventario de Objetos</h1>
+
+<form method="GET" action="{% url 'buscar_objetos' %}">
+  <input type="text" name="q" placeholder="Buscar..." value="{{ request.GET.q }}">
+  <button type="submit">Buscar</button>
+</form>
+
+<ul>
+    <!-- Cambiamos 'inventario' por 'object_list' -->
+    {% for objeto in object_list %} 
+        <li>
+            <!-- Quitamos '.html' del nombre de la URL -->
+            <a href="{% url 'detalles_objeto' objeto.pk %}">
+                {{ objeto.codigo_pddh }}
+            </a>
+            {{ objeto.descripcion }}
+            {{ objeto.marca }}
+            {{ objeto.modelo }}
+            {{ objeto.serie }}
+            {{ objeto.fecha_adquisición }}
+            ${{ objeto.valor_unitario }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <h1>Detalles del Objeto</h1>
+
+    <form method="POST" action="{% url 'editar_objeto' objeto.id %}">
+        {% csrf_token %}
+        <div>
+            <label for="codigo_pddh">Código PDDH:</label>
+            <input type="text" id="codigo_pddh" name="codigo_pddh" value="{{ objeto.codigo_pddh }}">
+        </div>
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion">{{ objeto.descripcion }}</textarea>
+        </div>
+        <div>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" value="{{ objeto.marca }}">
+        </div>
+        <div>
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" value="{{ objeto.modelo }}">
+        </div>
+        <div>
+            <label for="serie">Serie:</label>
+            <input type="text" id="serie" name="serie" value="{{ objeto.serie }}">
+        </div>
+        <div>
+            <label for="fecha_adquisición">Fecha de Adquisición:</label>
+            <input type="text" id="fecha_adquisicion" name="fecha_adquisicion" value="{{ objeto.fecha_adquisición }}">
+        </div>
+        <div>
+            <label for="valor_unitario">Valor Unitario:</label>
+            <input type="text" id="valor_unitario" name="valor_unitario" value="{{ objeto.valor_unitario }}">
+        </div>
+        <button type="submit" style="background-color: #0073ff; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">Guardar Cambios</button>
+    </form>
+
+    <form method="POST" action="{% url 'borrar_objetos' objeto.pk %}" onsubmit="return confirm('¿Estás completamente seguro de que deseas eliminar este objeto? Esta acción no se puede deshacer.');">
+        {% csrf_token %}
+        <button type="submit" style="background-color: #dc3545; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">
+            Eliminar Objeto
+        </button>
+    </form>
+
+    <form method="GET" action="{% url 'inventario' %}">
+        <button type="submit" style="background-color: #0aff13; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">
+            Volver al Inventario
+        </button>
+    </form>
+
+{% endblock %}
