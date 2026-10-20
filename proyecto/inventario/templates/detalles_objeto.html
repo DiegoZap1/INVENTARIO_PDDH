@@ -1,6 +1,9 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/detalles_objeto.css' %}">
 
     <h1>Detalles del Objeto</h1>
 
@@ -27,8 +30,8 @@
             <input type="text" id="serie" name="serie" value="{{ objeto.serie }}">
         </div>
         <div>
-            <label for="fecha_adquisición">Fecha de Adquisición:</label>
-            <input type="text" id="fecha_adquisicion" name="fecha_adquisicion" value="{{ objeto.fecha_adquisición }}">
+            <label for="fecha_adquisicion">Fecha de Adquisición:</label>
+            <input type="date" id="fecha_adquisicion" name="fecha_adquisicion" value="{{ objeto.fecha_adquisición|date:'Y-m-d' }}">
         </div>
         <div>
             <label for="valor_unitario">Valor Unitario:</label>
@@ -45,7 +48,7 @@
     </form>
 
     <form method="GET" action="{% url 'inventario' %}">
-        <button type="submit" style="background-color: #0aff13; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">
+        <button type="submit" style="background-color: #47a34a; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">
             Volver al Inventario
         </button>
     </form>

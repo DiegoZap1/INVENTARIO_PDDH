@@ -1,0 +1,124 @@
+* {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #eef2f7;
+      color: #1f2937;
+      line-height: 1.5;
+    }
+
+    /* Barra superior institucional */
+    header {
+      background: #1e3a8a;
+      color: #fff;
+      padding: 14px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrap {
+      width: min(100% - 32px, 1100px);
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Logotipo y Título */
+    .marca-institucional {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .marca-institucional:focus-visible,
+    .btn:focus-visible {
+      outline: 3px solid #3b82f6;
+      outline-offset: 2px;
+    }
+
+    .logo-pddh {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 3px 6px;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .marca-institucional h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+    }
+
+    /* Contenedor de acciones del navbar */
+    .nav-acciones {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* Botones de navegación */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 16px;
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-destacado {
+      background-color: #16a34a;
+      border-color: #16a34a;
+    }
+
+    .btn-destacado:hover {
+      background-color: #15803d;
+      border-color: #15803d;
+    }
+
+    main {
+      padding: 24px 0 40px;
+    }
+
+    @media (max-width: 650px) {
+      .grid {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-acciones {
+        width: 100%;
+      }
+
+      .nav-acciones .btn {
+        flex: 1;
+        text-align: center;
+      }
+    }

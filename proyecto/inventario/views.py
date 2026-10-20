@@ -5,6 +5,7 @@ from django.template import loader
 from django.http import HttpResponse
 from .forms import objetoForm
 from django.db.models import Q
+from django.utils.dateparse import parse_date
 
 # Create your views here.
 
@@ -60,16 +61,17 @@ def editar_objeto(request, pk):
     objeto = inventario_objetos.objects.get(pk=pk)
     
     if request.method == 'POST':
-        # 2. Modificar los campos con la información del formulario
-        objeto.nombre = request.POST.get('codigo_pddh')
+        objeto.codigo_pddh = request.POST.get('codigo_pddh')
         objeto.descripcion = request.POST.get('descripcion')
         objeto.marca = request.POST.get('marca')
         objeto.modelo = request.POST.get('modelo')
         objeto.serie = request.POST.get('serie')
-        objeto.fecha_adquisicion = request.POST.get('fecha_adquisición')
+        nueva_fecha = parse_date(request.POST.get('fecha_adquisicion', ''))
+        if nueva_fecha:
+            objeto.fecha_adquisición = nueva_fecha
         objeto.valor_unitario = request.POST.get('valor_unitario')
         objeto.save()
-        
+
     return render(request, 'detalles_objeto.html', {'objeto': objeto})
 
 def buscar_objetos(request):

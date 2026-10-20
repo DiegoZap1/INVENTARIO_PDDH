@@ -1,28 +1,53 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/inventario.css' %}">
+
 <h1>Inventario de Objetos</h1>
 
-<form method="GET" action="{% url 'buscar_objetos' %}">
+<form method="GET" action="{% url 'buscar_objetos' %}" style="margin-bottom: 20px;" class="form-busqueda">
   <input type="text" name="q" placeholder="Buscar..." value="{{ request.GET.q }}">
   <button type="submit">Buscar</button>
 </form>
 
-<ul>
-    <!-- Cambiamos 'inventario' por 'object_list' -->
-    {% for objeto in object_list %} 
-        <li>
-            <!-- Quitamos '.html' del nombre de la URL -->
-            <a href="{% url 'detalles_objeto' objeto.pk %}">
-                {{ objeto.codigo_pddh }}
-            </a>
-            {{ objeto.descripcion }}
-            {{ objeto.marca }}
-            {{ objeto.modelo }}
-            {{ objeto.serie }}
-            {{ objeto.fecha_adquisición }}
-            ${{ objeto.valor_unitario }}
-        </li>
+<table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse; text-align: left;">
+  <thead style="background-color: #f2f2f2;">
+    <tr>
+      <th>Código PDDH</th>
+      <th>Descripción</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Serie</th>
+      <th>Fecha Adquisición</th>
+      <th>Valor Unitario</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for objeto in object_list %}
+      <tr>
+        <td>{{ objeto.codigo_pddh }}</td>
+        <td>{{ objeto.descripcion }}</td>
+        <td>{{ objeto.marca }}</td>
+        <td>{{ objeto.modelo }}</td>
+        <td>{{ objeto.serie }}</td>
+        <td>{{ objeto.fecha_adquisición }}</td>
+        <td>${{ objeto.valor_unitario }}</td>
+        <td style="white-space: nowrap;">
+          <a href="{% url 'detalles_objeto' objeto.pk %}" style="background-color: #0073ff; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; display: inline-block; margin-right: 5px;">
+            ✍ Actualizar
+          </a>
+          <a href="{% url 'borrar_objetos' objeto.pk %}" style="background-color: #dc3545; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; display: inline-block;">
+            ❌ Eliminar
+          </a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="8" style="text-align: center; padding: 15px;">No se encontraron objetos registrados.</td>
+      </tr>
     {% endfor %}
-</ul>
+  </tbody>
+</table>
 {% endblock %}

@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Detalles y Edición de Objeto (Compatible con estructura HTML intacta)
+   ========================================================================== */
+
+/* Título de la sección */
+h1 {
+  color: #1e3a8a;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 20px;
+}
+
+/* Tarjeta principal que envuelve el formulario de edición */
+form[action*="editar_objeto"] {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  max-width: 750px;
+}
+
+/* Separación entre cada grupo de campo */
+form[action*="editar_objeto"] > div {
+  margin-bottom: 16px;
+}
+
+/* Etiquetas */
+form[action*="editar_objeto"] label {
+  display: block;
+  margin: 0 0 6px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Entradas de texto, fecha y textarea */
+form[action*="editar_objeto"] input[type="text"],
+form[action*="editar_objeto"] input[type="date"],
+form[action*="editar_objeto"] textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border: 1px solid #9ca3af;
+  border-radius: 6px;
+  background: #ffffff;
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+form[action*="editar_objeto"] input[type="text"],
+form[action*="editar_objeto"] input[type="date"] {
+  min-height: 44px;
+}
+
+form[action*="editar_objeto"] textarea {
+  min-height: 90px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+/* Focus accesible institucional */
+form[action*="editar_objeto"] input:focus-visible,
+form[action*="editar_objeto"] textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Botones de Acción
+   ========================================================================== */
+
+/* Botón Guardar Cambios (Azul institucional) */
+form[action*="editar_objeto"] button[type="submit"] {
+  min-height: 44px !important;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 16px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: #1e3a8a !important;
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+form[action*="editar_objeto"] button[type="submit"]:hover {
+  background: #172554 !important;
+}
+
+/* Formulario y Botón de Eliminar Objeto */
+form[action*="borrar_objetos"] {
+  max-width: 750px;
+  margin-bottom: 12px;
+}
+
+form[action*="borrar_objetos"] button[type="submit"] {
+  min-height: 44px !important;
+  width: 100%;
+  padding: 10px 16px !important;
+  border: 1px solid #b91c1c !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #991b1b !important;
+  font-family: inherit !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+form[action*="borrar_objetos"] button[type="submit"]:hover {
+  background: #fef2f2 !important;
+}
+
+/* Formulario y Botón de Volver al Inventario */
+form[action*="inventario"] {
+  max-width: 750px;
+  margin-bottom: 30px;
+}
+
+form[action*="inventario"] button[type="submit"] {
+  min-height: 44px !important;
+  width: 100%;
+  padding: 10px 16px !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 8px !important;
+  background: #6b7280 !important;
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+form[action*="inventario"] button[type="submit"]:hover {
+  background: #4b5563 !important;
+}
+
+/* Ajustes en pantallas reducidas */
+@media (max-width: 600px) {
+  form[action*="editar_objeto"] {
+    padding: 18px 14px;
+  }
+}
