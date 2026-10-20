@@ -56,3 +56,14 @@ Unicamente es para permitir que haya formularios en las páginas html e ingresar
 *Imagen de código:*
 
 ![alt text](screenshots/forms.png)
+
+#
+
+## **Nuevas cosas añadidas al entorno virtual**
+- Weasyprint para exportar a pdf
+- Python-docx para exportar a word
+- Openpyxl para exportar a excel
+
+- Operativo el PDF
+- Operativo el WORD (pero sujeto a cambios)
+- Operativo el EXCEL (pero sujeto a cambios)

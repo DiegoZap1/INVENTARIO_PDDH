@@ -2,5 +2,12 @@
 
 {% block content %}
     <h1>Exportar Inventario</h1>
+
+    <div class="export-options">
+        <a href="{% url 'exportar_pdf' %}" class="btn btn-primary" style="background-color: #dc3545; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">Exportar a PDF</a>
+        <a href="{% url 'exportar_word' %}" class="btn btn-primary" style="background-color: #0073ff; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">Exportar a Word</a>
+        <a href="{% url 'exportar_excel' %}" class="btn btn-primary" style="background-color: #28a745; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">Exportar a Excel</a>
+    </div>
+
     <p>NOTA: Al exportar a uno de los formatos, se toma en cuenta todo el inventario. Si se quiere editar la información, deberá de hacerse mediante herramientas para editar dichos formatos.</p>
 {% endblock %}
