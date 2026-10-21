@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 from .models import inventario_objetos
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template import loader
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -100,8 +100,8 @@ def buscar_objetos(request):
     
     return render(request, 'inventario.html', {'object_list': resultados})
 
-def borrar_objetos(pk):
-    objeto = inventario_objetos.objects.get(pk=pk)
+def borrar_objetos(request, pk):
+    objeto = get_object_or_404(inventario_objetos, pk=pk)
     objeto.delete()
     return redirect('inventario')
 
