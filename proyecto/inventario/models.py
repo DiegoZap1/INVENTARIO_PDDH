@@ -9,6 +9,7 @@ class inventario_objetos(models.Model):
     serie = models.CharField(max_length=100)
     fecha_adquisición = models.DateField()
     valor_unitario = models.DecimalField(max_digits=20, decimal_places=2)
+    observaciones = models.TextField()
 
     def __str__(self):
         return self.codigo_pddh

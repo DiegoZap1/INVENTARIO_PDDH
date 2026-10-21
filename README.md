@@ -5,16 +5,17 @@
 *A continuación se compartirá el siguiente enlace hacia el archivo de documentación de errores parcheados y cambios hechos, así cómo con sus fechas. El enlace siempre será de este mismo repositorio. Así como adjunto después de ese documento irá las descripciones generales del proyecto / herramienta.*
 ##
 *NOTAS DE PARCHES:* [CAMBIOS Y PARCHES](NOTAS_PARCHES.md)
+*CAMBIOS HECHOS:* [CAMBIOS HECHOS](CAMBIOS_HECHOS.md)
 ##
 
 ### PROPÓSITO:
 El programa tiene cómo único propósito el de:
 
-> - Almacenar
-> - Actualizar
-> - Leer
-> - Borrar
-> - Exportar a diferentes formatos (Word, Excel, y PDF)
+> - Almacenar objetos
+> - Actualizar objetos
+> - Ver en detalle objetos
+> - Borrar objetos
+> - Exportar esos objetos a tablas en diferentes formatos (Word, Excel, y PDF)
 
 Todos los datos serán únicamente de inventario. Nada más.
 
@@ -29,6 +30,7 @@ Unicamente puede almacenar datos del siguiente tipo:
 > - Serie del Objeto
 > - Fecha de adquisición del objeto
 > - Valor unitario del objeto
+> - Observaciones
 
 ##
 

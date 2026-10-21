@@ -4,9 +4,9 @@
 ## **APP DE INVENTARIO**
 ### **HTML**
 > - **index.html** ya siendo la base del navbar y lo que tendrán las otras páginas
-> - **inventario.html** ya mostrando las tablas de los objetos disponibles, permitiendo ver en detalle los objetos y buscarlos (ya sea por código, descripción, marca, modelo, serie) 
+> - **inventario.html** ya mostrando las tablas de los objetos disponibles, permitiendo ver en detalle los objetos y buscarlos (ya sea por código, descripción, marca, modelo, serie, observaciones) 
 > - **agregar_objeto.html** funcionando al 100%. Agrega objetos a la base de datos sin problemas
-> - **detalles_objeto.html** funcionando al 75%. Muestra datos del objeto, permite regresar al inventario y permite actualizar. Unicamente faltando que pueda eliminarse el objeto.
+> - **detalles_objeto.html** funcionando al 100%. Muestra datos del objeto, permite regresar al inventario, permite actualizar el objeto y permite borrar el registro/objeto.
 > - **exportar.html** todavía está sujeto a cambios
 
 *Enlace de los html*: [templates](proyecto\inventario\templates)
@@ -24,6 +24,7 @@ Alberga los siguientes elementos, pero está sujeto a cambios en los campos de d
 > - Serie del Objeto
 > - Fecha de adquisición del objeto
 > - Valor unitario del objeto
+> - Observaciones
 
 *Enlace de modelos/campos de la base:* [models.py](proyecto\inventario\models.py)
 
@@ -60,10 +61,10 @@ Unicamente es para permitir que haya formularios en las páginas html e ingresar
 #
 
 ## **Nuevas cosas añadidas al entorno virtual**
-- Weasyprint para exportar a pdf
+- Reportlab para exportar a pdf
 - Python-docx para exportar a word
 - Openpyxl para exportar a excel
 
-- Operativo el PDF
+- Operativo el PDF (pero sujeto a cambios)
 - Operativo el WORD (pero sujeto a cambios)
 - Operativo el EXCEL (pero sujeto a cambios)

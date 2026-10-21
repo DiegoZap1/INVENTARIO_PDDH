@@ -13,6 +13,7 @@ class objetoForm(forms.ModelForm):
             'serie': 'Serie',
             'fecha_adquisición': 'Fecha de adquisición',
             'valor_unitario': 'Valor unitario',
+            'observaciones' : 'Observaciones',
         }
         widgets = {
             'fecha_adquisición': forms.DateInput(attrs={'type': 'date'}),

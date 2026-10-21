@@ -81,6 +81,7 @@ def editar_objeto(request, pk):
         if nueva_fecha:
             objeto.fecha_adquisición = nueva_fecha
         objeto.valor_unitario = request.POST.get('valor_unitario')
+        objeto.observaciones = request.POST.get('observaciones')
         objeto.save()
 
     return render(request, 'detalles_objeto.html', {'objeto': objeto})
@@ -93,7 +94,8 @@ def buscar_objetos(request):
             Q(descripcion__icontains=query) |
             Q(marca__icontains=query) |
             Q(modelo__icontains=query) |
-            Q(serie__icontains=query)
+            Q(serie__icontains=query)|
+            Q(observaciones__icontains=query)
         )
     else:
         resultados = inventario_objetos.objects.all()
@@ -167,7 +169,8 @@ def exportar_tabla_pdf(request):
         Paragraph("<b>Modelo</b>", cell_header_style),
         Paragraph("<b>Serie</b>", cell_header_style),
         Paragraph("<b>Fecha Adq.</b>", cell_header_style),
-        Paragraph("<b>Valor Unit.</b>", cell_header_style)
+        Paragraph("<b>Valor Unit.</b>", cell_header_style),
+        Paragraph("<b>Observaciones</b>", cell_header_style)
     ]]
     
     # 4. Rellenar las filas con los datos del modelo
@@ -179,7 +182,8 @@ def exportar_tabla_pdf(request):
             Paragraph(str(item.modelo), cell_text_style),
             Paragraph(str(item.serie), cell_text_style),
             Paragraph(str(item.fecha_adquisición.strftime('%d/%m/%Y') if item.fecha_adquisición else ''), cell_text_style),
-            Paragraph(f"${item.valor_unitario}", cell_text_style)
+            Paragraph(f"${item.valor_unitario}", cell_text_style),
+            Paragraph(str(item.observaciones), cell_text_style)
         ])
     
     # 5. Definir el ancho proporcional para cada una de las 7 columnas (Total disponible ~732 puntos)
@@ -226,6 +230,7 @@ def exportar_a_word(request):
     hdr_cells[4].text = 'Serie'
     hdr_cells[5].text = 'Fecha de Adquisición'
     hdr_cells[6].text = 'Valor Unitario'
+    hdr_cells[7].text = 'Observaciones'
 
     # 4. Rellenar la tabla con los registros de la base de datos
     for item in registros:
@@ -237,6 +242,7 @@ def exportar_a_word(request):
         row_cells[4].text = str(item.serie)
         row_cells[5].text = str(item.fecha_adquisición)
         row_cells[6].text = str(item.valor_unitario)
+        row_cells[7].text = str(item.observaciones)
 
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
     response['Content-Disposition'] = 'attachment; filename="reporte_tablas.docx"'
@@ -257,7 +263,7 @@ def exportar_excel(request):
     ws['A1'].alignment = Alignment(horizontal='center', vertical='center')
 
     # 3. Escribir los encabezados de la tabla en la Fila 6 (dejamos la 5 en blanco de espacio)
-    encabezados = ['Código PDDH', 'Descripción', 'Marca', 'Modelo', 'Serie', 'Fecha de Adquisición', 'Valor Unitario']
+    encabezados = ['Código PDDH', 'Descripción', 'Marca', 'Modelo', 'Serie', 'Fecha de Adquisición', 'Valor Unitario', 'Observaciones']
     
     # Asignamos los encabezados directamente a la fila 6
     for col_num, header_title in enumerate(encabezados, start=1):
@@ -275,7 +281,8 @@ def exportar_excel(request):
             obj.modelo, 
             obj.serie, 
             str(obj.fecha_adquisición), 
-            str(obj.valor_unitario)
+            str(obj.valor_unitario),
+            str(obj.observaciones),
         ]
         for col_num, value in enumerate(row_data, start=1):
             ws.cell(row=row_num, column=col_num, value=value)
